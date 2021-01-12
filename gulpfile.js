@@ -8,6 +8,7 @@ const sass = require('gulp-sass')
 const babel = require('gulp-babel')
 const wrap = require('gulp-exports')
 const replace = require('gulp-replace')
+const rev = require('gulp-rev');
 const args = require('yargs').argv
 
 sass.compiler = require('node-sass')
@@ -68,7 +69,8 @@ function vendorSpa () {
   return src([
     './node_modules/single-spa/lib/umd/single-spa.min.js',
     './node_modules/single-spa-vue/lib/single-spa-vue.js',
-    './node_modules/import-map-overrides/dist/import-map-overrides.js',
+    // './node_modules/import-map-overrides/dist/import-map-overrides.js',
+    './workaround/import-map-overrides.js', // IE保护模式下localStorage报错问题
     './node_modules/systemjs/dist/system.min.js',
     './node_modules/systemjs/dist/extras/amd.min.js',
     './node_modules/systemjs/dist/extras/named-exports.min.js'
